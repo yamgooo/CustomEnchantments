@@ -7,56 +7,54 @@ import cn.nukkit.potion.Effect;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ArmorEffectEquipmentEnchant extends ArmorEquipmentEnchant {
     private final Effect[] givenEffects;
-    private final Map<Long, Map<Integer, Effect>> trackedPlayers = new HashMap<>();
+    private final Map<Long, Map<Effect, Integer>> trackedPlayers = new ConcurrentHashMap<>();
 
-    public ArmorEffectEquipmentEnchant(int id, String name, String description, Enchantment.Rarity rarity, EnchantmentType type, Effect[] givenEffects) {
+    public ArmorEffectEquipmentEnchant(int id, String name, String description, Rarity rarity, EnchantmentType type, Effect[] givenEffects) {
         super(id, name, description, rarity, type);
-        this.givenEffects = givenEffects;
-
-        for (Effect effect : this.givenEffects) {
-            effect.setDuration(Integer.MAX_VALUE);
+        this.givenEffects = new Effect[givenEffects.length];
+        for (int i = 0; i < givenEffects.length; i++) {
+            this.givenEffects[i] = givenEffects[i].clone();
+            this.givenEffects[i].setDuration(Integer.MAX_VALUE);
         }
     }
 
     @Override
     public void onEquip(Player player, int level) {
-        long playerId = player.getId();
-        trackedPlayers.putIfAbsent(playerId, new HashMap<>());
+        if (player == null) return;
 
-        for (Effect effectInstance : givenEffects) {
-            Effect clonedEffect = effectInstance.clone();
-            clonedEffect.setAmplifier((level - 1)); // TODO: check the required forced level
-            player.addEffect(clonedEffect);
-            trackedPlayers.get(playerId).put(System.identityHashCode(clonedEffect), clonedEffect);
+        long playerId = player.getId();
+        Map<Effect, Integer> playerEffects = trackedPlayers.computeIfAbsent(playerId, k -> new HashMap<>());
+
+        for (Effect baseEffect : givenEffects) {
+            Effect effect = baseEffect.clone();
+            effect.setAmplifier(level); // TODO: check if is required the forced amplifier
+            player.addEffect(effect);
+            playerEffects.put(effect, System.identityHashCode(effect));
         }
     }
 
     @Override
     public void onRemove(Player player, int level) {
+        if (player == null) return;
+
         long playerId = player.getId();
-        Map<Integer, Effect> playerEffects = trackedPlayers.getOrDefault(playerId, new HashMap<>());
+        Map<Effect, Integer> playerEffects = trackedPlayers.get(playerId);
+        if (playerEffects == null) return;
 
-        for (Map.Entry<Integer, Effect> entry : playerEffects.entrySet()) {
-            Effect effect = entry.getValue();
+        playerEffects.forEach((effect, hashCode) -> {
             int effectId = effect.getId();
-
-            if (!player.hasEffect(effectId)) {
-                playerEffects.remove(entry.getKey());
-                continue;
+            if (player.hasEffect(effectId)) {
+                Effect activeEffect = player.getEffect(effectId);
+                if (System.identityHashCode(activeEffect) == hashCode) {
+                    player.removeEffect(effectId);
+                }
             }
+        });
 
-            Effect activeEffect = player.getEffect(effectId);
-            if (System.identityHashCode(activeEffect) == entry.getKey()) {
-                player.removeEffect(effectId);
-                playerEffects.remove(entry.getKey());
-            }
-        }
-
-        if (playerEffects.isEmpty()) {
-            trackedPlayers.remove(playerId);
-        }
+        trackedPlayers.remove(playerId);
     }
 }

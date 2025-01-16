@@ -1,5 +1,5 @@
 name: CustomEnchant
-main: erik.customenchantment.Main
+main: erik.customenchantment.Enchantment
 version: 1.0.0
 api: 1.0.13
 description: Many funny custom enchantments for MCPE on Nukkit-MOT
