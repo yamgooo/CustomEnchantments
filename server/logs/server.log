@@ -1,0 +1,15 @@
+2025-01-15 19:54:13.886 [main] INFO - Loading server properties...
+2025-01-15 19:54:14.085 [main] INFO - -- Nukkit MOT --
+2025-01-15 19:54:17.871 [main] INFO - Loaded 0 resource packs
+2025-01-15 19:54:17.903 [main] INFO - Opening server on 0.0.0.0:19132
+2025-01-15 19:54:18.312 [main] INFO - Enabling Nukkit-MOT vgit-0b64bd0
+2025-01-15 19:54:18.312 [main] INFO - Loading CustomEnchant v1.0.0
+2025-01-15 19:54:18.602 [main] INFO - native LevelDB provider: false
+2025-01-15 19:54:18.682 [main] INFO - Preparing level "world"
+2025-01-15 19:54:19.385 [main] INFO - Preparing level "nether"
+2025-01-15 19:54:19.405 [main] INFO - Preparing level "the_end"
+2025-01-15 19:54:19.413 [main] INFO - Enabling CustomEnchant v1.0.0
+2025-01-15 19:54:19.441 [main] INFO - [CustomEnchant] Enabled Custom Enchantments!
+2025-01-15 19:54:19.478 [main] INFO - Done (5.615s)! For help, type "help"
+2025-01-15 19:54:46.782 [main] INFO - yamgooo[/127.0.0.1:56330] [Protocol Version: 766 (1.21.50)] logged in
+2025-01-15 19:54:50.582 [main] INFO - yamgooo joined the game
