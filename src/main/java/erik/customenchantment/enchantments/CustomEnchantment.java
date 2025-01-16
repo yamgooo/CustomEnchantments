@@ -9,23 +9,15 @@ import javax.annotation.Nullable;
 import java.util.Map;
 
 public class CustomEnchantment  extends Enchantment {
-    private final String description;
-    private final String name;
-    private final int id;
+    public final String description;
+    public final String name;
+    public final int id;
 
     public CustomEnchantment(int id, String name, String description, Enchantment.Rarity rarity, EnchantmentType type) {
         super(id, name, rarity, type);
         this.name = name;
         this.description = description;
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getLoreLine(int level) {
