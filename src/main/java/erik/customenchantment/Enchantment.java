@@ -4,7 +4,9 @@ import cn.nukkit.item.enchantment.EnchantmentType;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.TextFormat;
+import erik.customenchantment.commands.CustomEnchantmentCommand;
 import erik.customenchantment.enchantments.ArmorEffectEquipmentEnchant;
+import erik.customenchantment.enchantments.ItemHeldEffectsEnchant;
 
 public class Enchantment extends PluginBase
 {
@@ -27,7 +29,7 @@ public class Enchantment extends PluginBase
                             EnchantmentConstants.SPEED,
                             "speed",
                             "Custom Armor Enchantment",
-                            cn.nukkit.item.enchantment.Enchantment.Rarity.COMMON,
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
                             EnchantmentType.ARMOR,
                             new Effect[] {
                                     Effect.getEffect(Effect.SPEED)
@@ -36,10 +38,19 @@ public class Enchantment extends PluginBase
                             EnchantmentConstants.FIRE_RESISTANCE,
                             "fire_resistance",
                             "Custom Armor Enchantment",
-                            cn.nukkit.item.enchantment.Enchantment.Rarity.COMMON,
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.RARE,
                             EnchantmentType.ARMOR,
                             new Effect[] {
-                                    Effect.getEffect(Effect.SPEED)
+                                    Effect.getEffect(Effect.FIRE_RESISTANCE)
+                            }),
+                    new ItemHeldEffectsEnchant(
+                            EnchantmentConstants.STRENGTH,
+                            "strength",
+                            "Custom Item Held Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
+                            EnchantmentType.ALL,
+                            new Effect[] {
+                                    Effect.getEffect(Effect.STRENGTH)
                             })
             );
 
@@ -54,6 +65,7 @@ public class Enchantment extends PluginBase
     @Override
     public void onEnable() {
         this.getServer().getPluginManager().registerEvents(new EnchantmentListener(), this);
+        this.getServer().getCommandMap().register("customenchantment", new CustomEnchantmentCommand());
         this.getLogger().info(TextFormat.GREEN + "Enabled Custom Enchantments!");
     }
 

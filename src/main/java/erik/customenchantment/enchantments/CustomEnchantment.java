@@ -20,23 +20,40 @@ public class CustomEnchantment  extends Enchantment {
         this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public String getLoreLine(int level) {
         Map<Integer, String> romanNumerals = Map.of(
                 1, "I", 2, "II", 3, "III", 4, "IV", 5, "V",
                 6, "VI", 7, "VII", 8, "VIII", 9, "IX", 10, "X"
         );
 
-        Map<Integer, String> rarityColors = Map.of(
-                Rarity.COMMON.ordinal(), TextFormat.YELLOW.toString(),
-                Rarity.UNCOMMON.ordinal(), TextFormat.MINECOIN_GOLD.toString(),
-                Rarity.RARE.ordinal(), TextFormat.RED.toString(),
-                Rarity.VERY_RARE.ordinal(), TextFormat.DARK_RED.toString()
+        Map<Integer, TextFormat> rarityColors = Map.of(
+                Rarity.COMMON.ordinal(), TextFormat.YELLOW,
+                Rarity.UNCOMMON.ordinal(), TextFormat.MINECOIN_GOLD,
+                Rarity.RARE.ordinal(), TextFormat.RED,
+                Rarity.VERY_RARE.ordinal(), TextFormat.DARK_RED
         );
 
-        String rarityColor = rarityColors.getOrDefault(getRarity().ordinal(), TextFormat.WHITE.toString());
+        TextFormat rarityColor = rarityColors.getOrDefault(getRarity().ordinal(), TextFormat.WHITE);
+        String formattedName = formatName(getName());
         String romanLevel = romanNumerals.getOrDefault(level, String.valueOf(level));
 
-        return rarityColor + getName() + " " + romanLevel;
+        return rarityColor + formattedName + " " + romanLevel;
+    }
+
+    private String formatName(String name) {
+        return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
     }
 
     @Nullable

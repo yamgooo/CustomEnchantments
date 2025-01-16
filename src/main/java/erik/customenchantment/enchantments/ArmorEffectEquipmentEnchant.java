@@ -31,7 +31,7 @@ public class ArmorEffectEquipmentEnchant extends ArmorEquipmentEnchant {
 
         for (Effect baseEffect : givenEffects) {
             Effect effect = baseEffect.clone();
-            effect.setAmplifier(level); // TODO: check if is required the forced amplifier
+            effect.setAmplifier(level - 1); // TODO: check if is required the forced amplifier
             player.addEffect(effect);
             playerEffects.put(effect, System.identityHashCode(effect));
         }

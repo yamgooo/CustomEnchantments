@@ -28,7 +28,7 @@ public class ItemHeldEffectsEnchant extends CustomEnchantment implements ItemHel
 
         for (Effect effectInstance : givenEffects) {
             Effect clonedEffect = effectInstance.clone();
-            clonedEffect.setAmplifier(level);
+            clonedEffect.setAmplifier(level - 1);
             player.addEffect(clonedEffect);
             trackedPlayers.get(playerId).put(System.identityHashCode(clonedEffect), clonedEffect);
         }

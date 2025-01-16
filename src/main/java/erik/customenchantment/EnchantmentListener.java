@@ -56,6 +56,7 @@ public class EnchantmentListener implements Listener {
                 if (!optionalEnchantment.isPresent()) continue;
                 CustomEnchantment customEnchantment = optionalEnchantment.get();
                 if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
+                customEnchantment.setLevel(enchant.getLevel(), false);
                 ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
                 armorEnchant.onRemove(player, enchant.getLevel());
             }
@@ -132,6 +133,7 @@ public class EnchantmentListener implements Listener {
                 if (!optionalEnchantment.isPresent()) continue;
                 CustomEnchantment customEnchantment = optionalEnchantment.get();
                 if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
+                customEnchantment.setLevel(enchant.getLevel(), false);
                 ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
                 armorEnchant.onRemove(player, enchant.getLevel());
                 removeTrackedEnchant(player.getId(), enchant.getId());
@@ -144,6 +146,7 @@ public class EnchantmentListener implements Listener {
                 if (!optionalEnchantment.isPresent()) continue;
                 CustomEnchantment customEnchantment = optionalEnchantment.get();
                 if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
+                customEnchantment.setLevel(enchant.getLevel(), false);
                 ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
                 armorEnchant.onEquip(player, enchant.getLevel());
                 addTrackedEnchant(player.getId(), enchant.getId(), armorEnchant);
@@ -163,6 +166,7 @@ public class EnchantmentListener implements Listener {
                 if (!optionalEnchantment.isPresent()) continue;
                 CustomEnchantment customEnchantment = optionalEnchantment.get();
                 if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
+                customEnchantment.setLevel(enchant.getLevel(), false);
                 ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
                 tracking.put(enchant.getId(), armorEnchant);
                 armorEnchant.onEquip(player, enchant.getLevel());
