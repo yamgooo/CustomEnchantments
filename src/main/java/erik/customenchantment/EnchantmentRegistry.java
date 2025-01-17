@@ -1,12 +1,13 @@
 package erik.customenchantment;
 
+import cn.nukkit.item.Item;
 import cn.nukkit.item.enchantment.Enchantment;
+import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.utils.Identifier;
 import erik.customenchantment.enchantments.CustomEnchantment;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class EnchantmentRegistry {
     private static EnchantmentRegistry instance;
@@ -46,5 +47,25 @@ public class EnchantmentRegistry {
 
     public Map<Integer, CustomEnchantment> getAllEnchantments() {
         return new HashMap<>(enchantments);
+    }
+
+    public CustomEnchantment[] getEnchantments(Item item) {
+        if (!item.hasEnchantments()) {
+            return new CustomEnchantment[] {};
+        } else {
+            List<CustomEnchantment> enchantments = new ArrayList<>();
+            ListTag<CompoundTag> ench = item.getNamedTag().getList("ench", CompoundTag.class);
+
+            for(CompoundTag entry : ench.getAll()) {
+                Optional<CustomEnchantment> e = this.getEnchantment(entry.getShort("id"));
+                if (e.isEmpty()) continue;
+                var enchantment = e.get();
+                enchantment.setLevel(entry.getShort("lvl"));
+                 enchantments.add(enchantment);
+
+            }
+
+            return enchantments.toArray(new CustomEnchantment[0]);
+        }
     }
 }

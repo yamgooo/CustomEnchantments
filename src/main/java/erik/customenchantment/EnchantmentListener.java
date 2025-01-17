@@ -82,17 +82,14 @@ public class EnchantmentListener implements Listener {
         }
 
         Map<Integer, CustomEnchantment> tracking = new HashMap<>();
-        for (Enchantment enchant : item.getEnchantments()) {
-            Optional<CustomEnchantment> optionalEnchantment = enchantmentRegistry.getEnchantment(enchant.getId());
-            if (!optionalEnchantment.isPresent()) continue;
-            CustomEnchantment customEnchantment = optionalEnchantment.get();
-            if (!(customEnchantment instanceof ItemHeldEnchant)) continue;
-            tracking.put(enchant.getId(), customEnchantment);
+        for (CustomEnchantment enchant : enchantmentRegistry.getEnchantments(item)) {
+            if (!(enchant instanceof ItemHeldEnchant)) continue;
+            tracking.put(enchant.getId(), enchant);
         }
 
         Map<Integer, CustomEnchantment> lastEnchants = lastHeldEnchants.get(playerId);
         if (lastEnchants != null) {
-            for (Enchantment enchant : lastEnchants.values()) {
+            for (CustomEnchantment enchant : lastEnchants.values()) {
                 if (enchant instanceof ItemHeldEnchant) {
                     ((ItemHeldEnchant) enchant).onUnHeld(player, enchant.getLevel());
                 }
@@ -128,26 +125,18 @@ public class EnchantmentListener implements Listener {
         int slot = event.getSlot();
 
         if (oldItem != null && oldItem.hasEnchantments()) {
-            for (Enchantment enchant : oldItem.getEnchantments()) {
-                Optional<CustomEnchantment> optionalEnchantment = enchantmentRegistry.getEnchantment(enchant.getId());
-                if (!optionalEnchantment.isPresent()) continue;
-                CustomEnchantment customEnchantment = optionalEnchantment.get();
-                if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
-                customEnchantment.setLevel(enchant.getLevel(), false);
-                ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
+            for (CustomEnchantment enchant : enchantmentRegistry.getEnchantments(oldItem)) {
+                if (!(enchant instanceof ArmorEquipmentEnchant)) continue;
+                ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) enchant;
                 armorEnchant.onRemove(player, enchant.getLevel());
                 removeTrackedEnchant(player.getId(), enchant.getId());
             }
         }
 
         if (newItem != null && newItem.hasEnchantments()) {
-            for (Enchantment enchant : newItem.getEnchantments()) {
-                Optional<CustomEnchantment> optionalEnchantment = enchantmentRegistry.getEnchantment(enchant.getId());
-                if (!optionalEnchantment.isPresent()) continue;
-                CustomEnchantment customEnchantment = optionalEnchantment.get();
-                if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
-                customEnchantment.setLevel(enchant.getLevel(), false);
-                ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
+            for (CustomEnchantment enchant : enchantmentRegistry.getEnchantments(newItem)) {
+                if (!(enchant instanceof ArmorEquipmentEnchant)) continue;
+                ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) enchant;
                 armorEnchant.onEquip(player, enchant.getLevel());
                 addTrackedEnchant(player.getId(), enchant.getId(), armorEnchant);
 
@@ -161,13 +150,9 @@ public class EnchantmentListener implements Listener {
         for (Item item : inventory) {
             if (!item.hasEnchantments()) continue;
 
-            for (Enchantment enchant : item.getEnchantments()) {
-                Optional<CustomEnchantment> optionalEnchantment = enchantmentRegistry.getEnchantment(enchant.getId());
-                if (!optionalEnchantment.isPresent()) continue;
-                CustomEnchantment customEnchantment = optionalEnchantment.get();
-                if (!(customEnchantment instanceof ArmorEquipmentEnchant)) continue;
-                customEnchantment.setLevel(enchant.getLevel(), false);
-                ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) customEnchantment;
+            for (Enchantment enchant : enchantmentRegistry.getEnchantments(item)) {
+                if (!(enchant instanceof ArmorEquipmentEnchant)) continue;
+                ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) enchant;
                 tracking.put(enchant.getId(), armorEnchant);
                 armorEnchant.onEquip(player, enchant.getLevel());
 

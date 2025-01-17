@@ -1,7 +1,10 @@
 package erik.customenchantment.enchantments;
 
+import cn.nukkit.item.Item;
 import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.item.enchantment.EnchantmentType;
+import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.nbt.tag.ListTag;
 import cn.nukkit.utils.Identifier;
 import cn.nukkit.utils.TextFormat;
 
@@ -12,6 +15,18 @@ public class CustomEnchantment  extends Enchantment {
     public final String description;
     public final String name;
     public final int id;
+    public int level;
+
+    @Override
+    public Enchantment setLevel(int level) {
+        this.level = level;
+        return this;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
+    }
 
     public CustomEnchantment(int id, String name, String description, Enchantment.Rarity rarity, EnchantmentType type) {
         super(id, name, rarity, type);
@@ -46,17 +61,51 @@ public class CustomEnchantment  extends Enchantment {
         );
 
         TextFormat rarityColor = rarityColors.getOrDefault(getRarity().ordinal(), TextFormat.WHITE);
-        String formattedName = formatName(getName());
+        String formattedName = formatName();
         String romanLevel = romanNumerals.getOrDefault(level, String.valueOf(level));
 
         return rarityColor + formattedName + " " + romanLevel;
     }
 
-    private String formatName(String name) {
-        return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+    private String formatName() {
+        String[] parts = name.split("_");
+
+        StringBuilder formattedName = new StringBuilder();
+        for (String part : parts) {
+            if (part.isEmpty()) continue;
+            formattedName.append(part.substring(0, 1).toUpperCase())
+                    .append(part.substring(1).toLowerCase())
+                    .append(" ");
+        }
+
+        return formattedName.toString().trim();
     }
+
 
     @Nullable
     @Override
     public Identifier getIdentifier()  { return new Identifier("enchantments", name.toLowerCase()); }
+
+    public Item apply(Item item) {
+        CompoundTag tag = item.hasCompoundTag() ? item.getNamedTag() : new CompoundTag();
+
+        ListTag<CompoundTag> enchTag;
+        if (tag.contains("ench")) {
+            enchTag = tag.getList("ench", CompoundTag.class);
+        } else {
+            enchTag = new ListTag<>("ench");
+        }
+
+        CompoundTag enchantmentTag = new CompoundTag();
+        enchantmentTag.putShort("id", (short) this.getId());
+        enchantmentTag.putShort("lvl", (short) this.getLevel());
+
+        enchTag.add(enchantmentTag);
+
+        tag.putList(enchTag);
+        item.setNamedTag(tag);
+
+        return item;
+    }
+
 }

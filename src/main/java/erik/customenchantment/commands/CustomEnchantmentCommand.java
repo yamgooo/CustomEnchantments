@@ -94,14 +94,14 @@ public class CustomEnchantmentCommand extends Command {
         int success = 0;
         for (Entity entity : entities) {
             Player player = (Player) entity;
-            enchantment.setLevel(enchantLevel, false);
+            enchantment.setLevel(enchantLevel);
             Item item = player.getInventory().getItemInHand();
             if (item.getId() == 0) {
                 log.addError("commands.enchant.noItem").output();
                 continue;
             }
             if (item.getId() != ItemID.BOOK) {
-                item.addEnchantment(enchantment);
+                item = enchantment.apply(item);
 
                 var itemLore = new ArrayList<>(Arrays.asList(item.getLore()));
                 var lore = TextFormat.RESET + enchantment.getLoreLine(enchantLevel);
@@ -112,7 +112,7 @@ public class CustomEnchantmentCommand extends Command {
                 player.getInventory().setItemInHand(item);
             } else {
                 Item enchanted = Item.get(ItemID.ENCHANTED_BOOK, 0, 1, item.getCompoundTag());
-                enchanted.addEnchantment(enchantment);
+                enchanted = enchantment.apply(enchanted);
 
                 var itemLore = new ArrayList<>(Arrays.asList(enchanted.getLore()));
                 var lore = TextFormat.RESET + enchantment.getLoreLine(enchantLevel);

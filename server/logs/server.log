@@ -1,29 +1,22 @@
-2025-01-15 23:01:43.936 [main] INFO - Loading server properties...
-2025-01-15 23:01:44.175 [main] INFO - -- Nukkit MOT --
-2025-01-15 23:01:49.236 [main] INFO - Loaded 0 resource packs
-2025-01-15 23:01:49.276 [main] INFO - Opening server on 0.0.0.0:19132
-2025-01-15 23:01:49.804 [main] INFO - Enabling Nukkit-MOT vgit-0b64bd0
-2025-01-15 23:01:49.809 [main] INFO - Loading CustomEnchant v1.0.0
-2025-01-15 23:01:49.862 [main] INFO - [CustomEnchant] Successfully registered all enchantments!
-2025-01-15 23:01:50.337 [main] INFO - native LevelDB provider: false
-2025-01-15 23:01:50.435 [main] INFO - Preparing level "world"
-2025-01-15 23:01:51.321 [main] INFO - Preparing level "nether"
-2025-01-15 23:01:51.353 [main] INFO - Preparing level "the_end"
-2025-01-15 23:01:51.361 [main] INFO - Enabling CustomEnchant v1.0.0
-2025-01-15 23:01:51.384 [main] INFO - [CustomEnchant] Enabled Custom Enchantments!
-2025-01-15 23:01:51.700 [main] INFO - Done (7.786s)! For help, type "help"
-2025-01-15 23:02:34.035 [main] INFO - yamgooo[/127.0.0.1:56330] [Protocol Version: 766 (1.21.50)] logged in
-2025-01-15 23:02:38.934 [main] INFO - yamgooo joined the game
-2025-01-15 23:02:54.915 [main] INFO - [yamgooo: Enchanting succeeded]
-2025-01-15 23:03:11.632 [main] INFO - [yamgooo: Enchanting succeeded]
-2025-01-15 23:03:42.097 [main] INFO - [yamgooo: Set own game mode to Creative]
-2025-01-15 23:03:48.344 [main] INFO - [yamgooo: Enchanting succeeded]
-2025-01-15 23:04:18.403 [main] INFO - [yamgooo: Enchanting succeeded]
-2025-01-15 23:04:46.597 [main] INFO - yamgooo left the game
-2025-01-15 23:04:46.598 [main] INFO - yamgooo[/127.0.0.1:56330] logged out due to Disconnected from Server
-2025-01-15 23:04:49.631 [main] INFO - yamgooo[/127.0.0.1:56330] [Protocol Version: 766 (1.21.50)] logged in
-2025-01-15 23:04:53.530 [main] INFO - yamgooo joined the game
-2025-01-15 23:05:07.980 [main] INFO - [yamgooo: Set own game mode to Creative]
-2025-01-15 23:05:18.737 [main] INFO - [yamgooo: Enchanting succeeded]
-2025-01-15 23:05:32.680 [main] INFO - [yamgooo: Enchanting succeeded]
-2025-01-15 23:05:54.031 [main] INFO - [yamgooo: Enchanting succeeded]
+2025-01-16 22:39:18.823 [main] INFO - Loading server properties...
+2025-01-16 22:39:19.059 [main] INFO - -- Nukkit MOT --
+2025-01-16 22:39:25.657 [main] INFO - Loaded 0 resource packs
+2025-01-16 22:39:25.725 [main] INFO - Opening server on 0.0.0.0:19132
+2025-01-16 22:39:26.410 [main] INFO - Enabling Nukkit-MOT vgit-0b64bd0
+2025-01-16 22:39:26.416 [main] INFO - Loading CustomEnchant v1.0.0
+2025-01-16 22:39:26.469 [main] INFO - [CustomEnchant] Successfully registered all enchantments!
+2025-01-16 22:39:27.503 [main] INFO - native LevelDB provider: false
+2025-01-16 22:39:27.611 [main] INFO - Preparing level "world"
+2025-01-16 22:39:29.193 [main] INFO - Preparing level "nether"
+2025-01-16 22:39:29.246 [main] INFO - Preparing level "the_end"
+2025-01-16 22:39:29.261 [main] INFO - Enabling CustomEnchant v1.0.0
+2025-01-16 22:39:29.272 [main] INFO - [CustomEnchant] Enabled Custom Enchantments!
+2025-01-16 22:39:29.327 [main] INFO - Done (10.524s)! For help, type "help"
+2025-01-16 22:39:38.341 [main] INFO - yamgooo[/127.0.0.1:63390] [Protocol Version: 766 (1.21.50)] logged in
+2025-01-16 22:39:44.031 [main] INFO - yamgooo joined the game
+2025-01-16 22:39:52.973 [main] INFO - [yamgooo: Enchanting succeeded]
+2025-01-16 22:39:55.580 [main] INFO - [yamgooo: Enchanting succeeded]
+2025-01-16 22:40:02.381 [main] INFO - [yamgooo: Enchanting succeeded]
+2025-01-16 22:40:05.182 [main] INFO - [yamgooo: Enchanting succeeded]
+2025-01-16 22:40:11.382 [main] INFO - [yamgooo: Set own game mode to Creative]
+2025-01-16 22:40:19.836 [main] INFO - [yamgooo: Enchanting succeeded]
