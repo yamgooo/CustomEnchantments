@@ -6,6 +6,7 @@ import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.TextFormat;
 import erik.customenchantment.commands.CustomEnchantmentCommand;
 import erik.customenchantment.enchantments.ArmorEffectEquipmentEnchant;
+import erik.customenchantment.enchantments.ImplantsCustomEnchant;
 import erik.customenchantment.enchantments.ItemHeldEffectsEnchant;
 
 public class Enchantment extends PluginBase
@@ -25,6 +26,40 @@ public class Enchantment extends PluginBase
     private void registerEnchantments() {
         try {
             enchantmentRegistry.registerEnchantments(
+                    new ImplantsCustomEnchant(
+                            EnchantmentConstants.IMPLANTS,
+                            "implants",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
+                            EnchantmentType.ARMOR
+                    ),
+                    new ArmorEffectEquipmentEnchant(
+                            EnchantmentConstants.INFRARED,
+                            "infrared",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
+                            EnchantmentType.ARMOR,
+                            new Effect[] {
+                                    Effect.getEffect(Effect.NIGHT_VISION)
+                            }),
+                    new ArmorEffectEquipmentEnchant(
+                            EnchantmentConstants.MERMAID,
+                            "mermaid",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
+                            EnchantmentType.ARMOR,
+                            new Effect[] {
+                                    Effect.getEffect(Effect.WATER_BREATHING)
+                            }),
+                    new ArmorEffectEquipmentEnchant(
+                            EnchantmentConstants.INVISIBILITY,
+                            "invisibility",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
+                            EnchantmentType.ARMOR,
+                            new Effect[] {
+                                    Effect.getEffect(Effect.INVISIBILITY)
+                            }),
                     new ArmorEffectEquipmentEnchant(
                             EnchantmentConstants.SPEED,
                             "speed",

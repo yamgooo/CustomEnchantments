@@ -5,6 +5,7 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerLoginEvent;
+import cn.nukkit.event.player.PlayerMoveEvent;
 import cn.nukkit.event.player.PlayerQuitEvent;
 import cn.nukkit.event.player.PlayerItemHeldEvent;
 import cn.nukkit.event.entity.EntityArmorChangeEvent;
@@ -13,6 +14,7 @@ import cn.nukkit.item.enchantment.Enchantment;
 import erik.customenchantment.enchantments.ArmorEquipmentEnchant;
 import erik.customenchantment.enchantments.ItemHeldEnchant;
 import erik.customenchantment.enchantments.CustomEnchantment;
+import erik.customenchantment.enchantments.MovementEnchant;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -150,10 +152,10 @@ public class EnchantmentListener implements Listener {
         for (Item item : inventory) {
             if (!item.hasEnchantments()) continue;
 
-            for (Enchantment enchant : enchantmentRegistry.getEnchantments(item)) {
+            for (CustomEnchantment enchant : enchantmentRegistry.getEnchantments(item)) {
+                tracking.put(enchant.getId(), enchant);
                 if (!(enchant instanceof ArmorEquipmentEnchant)) continue;
                 ArmorEquipmentEnchant armorEnchant = (ArmorEquipmentEnchant) enchant;
-                tracking.put(enchant.getId(), armorEnchant);
                 armorEnchant.onEquip(player, enchant.getLevel());
 
             }
@@ -173,6 +175,29 @@ public class EnchantmentListener implements Listener {
             playerEnchants.remove(enchantId);
             if (playerEnchants.isEmpty()) {
                 trackedArmorEnchants.remove(playerId);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+
+        if (event.getFrom().distance(event.getTo()) < 0.001) {
+            return;
+        }
+
+        long playerId = player.getId();
+        Map<Integer, CustomEnchantment> armorEnchants = trackedArmorEnchants.get(playerId);
+
+        if (armorEnchants != null && !armorEnchants.isEmpty()) {
+            for (Map.Entry<Integer, CustomEnchantment> entry : armorEnchants.entrySet()) {
+                CustomEnchantment enchant = entry.getValue();
+
+                if (!(enchant instanceof MovementEnchant)) continue;
+                MovementEnchant movementEnchant = (MovementEnchant) enchant;
+                movementEnchant.onMove(event, enchant.getLevel());
+
             }
         }
     }

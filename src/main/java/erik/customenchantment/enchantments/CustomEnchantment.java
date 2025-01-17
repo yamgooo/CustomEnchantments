@@ -54,7 +54,7 @@ public class CustomEnchantment  extends Enchantment {
         );
 
         Map<Integer, TextFormat> rarityColors = Map.of(
-                Rarity.COMMON.ordinal(), TextFormat.YELLOW,
+                Rarity.COMMON.ordinal(), TextFormat.BLUE,
                 Rarity.UNCOMMON.ordinal(), TextFormat.MINECOIN_GOLD,
                 Rarity.RARE.ordinal(), TextFormat.RED,
                 Rarity.VERY_RARE.ordinal(), TextFormat.DARK_RED
