@@ -4,5 +4,5 @@ import cn.nukkit.event.player.PlayerMoveEvent;
 import cn.nukkit.item.Item;
 
 public interface MovementEnchant {
-    void onMove(PlayerMoveEvent event, int level);
+    public abstract void onMove(PlayerMoveEvent event, int level, Item item);
 }

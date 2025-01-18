@@ -12,7 +12,7 @@ public class ItemHeldEffectsEnchant extends CustomEnchantment implements ItemHel
     private final Effect[] givenEffects;
     private final Map<Long, Map<Integer, Effect>> trackedPlayers = new HashMap<>();
 
-    public ItemHeldEffectsEnchant(int id, String name, String description, Enchantment.Rarity rarity, EnchantmentType type, Effect[] givenEffects) {
+    public ItemHeldEffectsEnchant(int id, String name, String description, Enchantment.Rarity rarity, EnchantmentType type, Effect... givenEffects) {
         super(id, name, description, rarity, type);
         this.givenEffects = givenEffects;
 

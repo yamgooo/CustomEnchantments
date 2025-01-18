@@ -8,12 +8,17 @@ import cn.nukkit.item.enchantment.EnchantmentType;
 import cn.nukkit.item.food.Food;
 
 public class ImplantsCustomEnchant extends CustomEnchantment implements MovementEnchant {
+
+    private static final double BASE_PROBABILITY_MULTIPLIER = 0.05;
+    private static final double FOOD_ADDITION_MULTIPLIER = 0.5;
+    private static final double SATURATION_ADDITION_MULTIPLIER = 0.5;
+
     public ImplantsCustomEnchant(int id, String name, String description, Rarity rarity, EnchantmentType type) {
         super(id, name, description, rarity, type);
     }
 
     @Override
-    public void onMove(PlayerMoveEvent event, int level) {
+    public void onMove(PlayerMoveEvent event, int level, Item item) {
         Player player = event.getPlayer();
         PlayerFood hungerManager = player.getFoodData();
 
@@ -21,16 +26,26 @@ public class ImplantsCustomEnchant extends CustomEnchantment implements Movement
             return;
         }
 
-        if (Math.random() * 100 > ((this.getMaxLevel() - level) * 10)) {
+        double chance = (level / (double) this.getMaxLevel()) * 100 * BASE_PROBABILITY_MULTIPLIER;
+        if (Math.random() * 100 > chance) {
             return;
         }
 
-        int foodToAdd = (int) ((level / (double) this.getMaxLevel()) * 2);
+        int maxFoodLevel = hungerManager.getMaxLevel();
+        int foodToAdd = (int) Math.ceil(
+                (level / (double) this.getMaxLevel()) * (maxFoodLevel * 0.1) * FOOD_ADDITION_MULTIPLIER
+        );
+        foodToAdd = Math.min(foodToAdd, maxFoodLevel - hungerManager.getLevel());
 
-        float saturationToAdd = (float) ((level / (double) this.getMaxLevel()) * 1.5);
+        float saturationToAdd = (float) (
+                (level / (double) this.getMaxLevel()) * (maxFoodLevel * 0.05) * SATURATION_ADDITION_MULTIPLIER
+        );
+        saturationToAdd = Math.min(saturationToAdd, maxFoodLevel - hungerManager.getLevel());
 
         hungerManager.addFoodLevel(foodToAdd, saturationToAdd);
     }
+
+
 
 
     @Override

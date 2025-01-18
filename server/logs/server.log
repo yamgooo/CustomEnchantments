@@ -1,16 +1,19 @@
-2025-01-16 23:10:46.564 [main] INFO - Loading server properties...
-2025-01-16 23:10:46.787 [main] INFO - -- Nukkit MOT --
-2025-01-16 23:10:50.536 [main] INFO - Loaded 0 resource packs
-2025-01-16 23:10:50.570 [main] INFO - Opening server on 0.0.0.0:19132
-2025-01-16 23:10:50.994 [main] INFO - Enabling Nukkit-MOT vgit-0b64bd0
-2025-01-16 23:10:50.998 [main] INFO - Loading CustomEnchant v1.0.0
-2025-01-16 23:10:51.050 [main] INFO - [CustomEnchant] Successfully registered all enchantments!
-2025-01-16 23:10:51.490 [main] INFO - native LevelDB provider: false
-2025-01-16 23:10:51.630 [main] INFO - Preparing level "world"
-2025-01-16 23:10:53.186 [main] INFO - Preparing level "nether"
-2025-01-16 23:10:53.234 [main] INFO - Preparing level "the_end"
-2025-01-16 23:10:53.251 [main] INFO - Enabling CustomEnchant v1.0.0
-2025-01-16 23:10:53.259 [main] INFO - [CustomEnchant] Enabled Custom Enchantments!
-2025-01-16 23:10:53.342 [main] INFO - Done (6.796s)! For help, type "help"
-2025-01-16 23:11:00.349 [main] INFO - yamgooo[/127.0.0.1:63390] [Protocol Version: 766 (1.21.50)] logged in
-2025-01-16 23:11:04.345 [main] INFO - yamgooo joined the game
+2025-01-18 14:15:13.438 [main] INFO - Loading server properties...
+2025-01-18 14:15:13.803 [main] INFO - -- Nukkit MOT --
+2025-01-18 14:15:21.682 [main] INFO - Loaded 0 resource packs
+2025-01-18 14:15:21.745 [main] INFO - Opening server on 0.0.0.0:19132
+2025-01-18 14:15:22.843 [main] INFO - Enabling Nukkit-MOT vgit-0b64bd0
+2025-01-18 14:15:22.852 [main] INFO - Loading CustomEnchant v1.0.0
+2025-01-18 14:15:23.574 [main] INFO - [CustomEnchant] Successfully registered all enchantments!
+2025-01-18 14:15:26.546 [main] INFO - native LevelDB provider: false
+2025-01-18 14:15:27.180 [main] INFO - Preparing level "world"
+2025-01-18 14:15:32.644 [main] INFO - Preparing level "nether"
+2025-01-18 14:15:32.747 [main] INFO - Preparing level "the_end"
+2025-01-18 14:15:32.778 [main] INFO - Enabling CustomEnchant v1.0.0
+2025-01-18 14:15:32.798 [main] INFO - [CustomEnchant] Enabled Custom Enchantments!
+2025-01-18 14:15:33.000 [main] INFO - Done (19.596s)! For help, type "help"
+2025-01-18 14:15:35.760 [main] INFO - yamgooo[/127.0.0.1:49575] [Protocol Version: 766 (1.21.50)] logged in
+2025-01-18 14:15:47.682 [main] INFO - yamgooo joined the game
+2025-01-18 14:16:55.396 [main] INFO - [yamgooo: Set own game mode to Creative]
+2025-01-18 15:12:33.996 [main] INFO - yamgooo left the game
+2025-01-18 15:12:33.997 [main] INFO - yamgooo[/127.0.0.1:49575] logged out due to Disconnected from Server

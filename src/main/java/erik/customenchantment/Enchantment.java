@@ -5,9 +5,7 @@ import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.potion.Effect;
 import cn.nukkit.utils.TextFormat;
 import erik.customenchantment.commands.CustomEnchantmentCommand;
-import erik.customenchantment.enchantments.ArmorEffectEquipmentEnchant;
-import erik.customenchantment.enchantments.ImplantsCustomEnchant;
-import erik.customenchantment.enchantments.ItemHeldEffectsEnchant;
+import erik.customenchantment.enchantments.*;
 
 public class Enchantment extends PluginBase
 {
@@ -26,11 +24,48 @@ public class Enchantment extends PluginBase
     private void registerEnchantments() {
         try {
             enchantmentRegistry.registerEnchantments(
+                    new ZeusEnchantment(
+                            EnchantmentConstants.ZEUS,
+                            "zeus",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
+                            EnchantmentType.BREAKABLE
+                    ),
+                    new ExperienceEnchant(
+                            EnchantmentConstants.EXPERIENCE,
+                            "experience",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.RARE,
+                            EnchantmentType.BREAKABLE
+                    ),
+                    new EffectsOnOpponentDeathEnchant(
+                            EnchantmentConstants.RECOVER,
+                            "recover",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
+                            EnchantmentType.BREAKABLE,
+                            Effect.getEffect(Effect.REGENERATION).setAmplifier(1).setDuration(100),
+                            Effect.getEffect(Effect.ABSORPTION).setDuration(100)
+                    ),
+                    new AutoSmeltEnchant(
+                            EnchantmentConstants.AUTO_SMELT,
+                            "autosmelt",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.RARE,
+                            EnchantmentType.BREAKABLE
+                    ),
+                    new HellforgedCustomEnchant(
+                            EnchantmentConstants.HELLFORGED,
+                            "hellforged",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
+                            EnchantmentType.BREAKABLE
+                    ),
                     new ImplantsCustomEnchant(
                             EnchantmentConstants.IMPLANTS,
                             "implants",
                             "Custom Armor Enchantment",
-                            cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
                             EnchantmentType.ARMOR
                     ),
                     new ArmorEffectEquipmentEnchant(
@@ -39,9 +74,7 @@ public class Enchantment extends PluginBase
                             "Custom Armor Enchantment",
                             cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
                             EnchantmentType.ARMOR,
-                            new Effect[] {
-                                    Effect.getEffect(Effect.NIGHT_VISION)
-                            }),
+                            Effect.getEffect(Effect.NIGHT_VISION)),
                     new ArmorEffectEquipmentEnchant(
                             EnchantmentConstants.MERMAID,
                             "mermaid",
@@ -57,36 +90,28 @@ public class Enchantment extends PluginBase
                             "Custom Armor Enchantment",
                             cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
                             EnchantmentType.ARMOR,
-                            new Effect[] {
-                                    Effect.getEffect(Effect.INVISIBILITY)
-                            }),
+                            Effect.getEffect(Effect.INVISIBILITY)),
                     new ArmorEffectEquipmentEnchant(
                             EnchantmentConstants.SPEED,
                             "speed",
                             "Custom Armor Enchantment",
                             cn.nukkit.item.enchantment.Enchantment.Rarity.UNCOMMON,
                             EnchantmentType.ARMOR,
-                            new Effect[] {
-                                    Effect.getEffect(Effect.SPEED)
-                            }),
+                            Effect.getEffect(Effect.SPEED)),
                     new ArmorEffectEquipmentEnchant(
                             EnchantmentConstants.FIRE_RESISTANCE,
                             "fire_resistance",
                             "Custom Armor Enchantment",
                             cn.nukkit.item.enchantment.Enchantment.Rarity.RARE,
                             EnchantmentType.ARMOR,
-                            new Effect[] {
-                                    Effect.getEffect(Effect.FIRE_RESISTANCE)
-                            }),
+                            Effect.getEffect(Effect.FIRE_RESISTANCE)),
                     new ItemHeldEffectsEnchant(
                             EnchantmentConstants.STRENGTH,
                             "strength",
                             "Custom Item Held Enchantment",
                             cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
                             EnchantmentType.ALL,
-                            new Effect[] {
-                                    Effect.getEffect(Effect.STRENGTH)
-                            })
+                            Effect.getEffect(Effect.STRENGTH))
             );
 
             getLogger().info(TextFormat.GREEN + "Successfully registered all enchantments!");

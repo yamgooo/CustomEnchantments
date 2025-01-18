@@ -13,7 +13,7 @@ public class ArmorEffectEquipmentEnchant extends ArmorEquipmentEnchant {
     private final Effect[] givenEffects;
     private final Map<Long, Map<Effect, Integer>> trackedPlayers = new ConcurrentHashMap<>();
 
-    public ArmorEffectEquipmentEnchant(int id, String name, String description, Rarity rarity, EnchantmentType type, Effect[] givenEffects) {
+    public ArmorEffectEquipmentEnchant(int id, String name, String description, Rarity rarity, EnchantmentType type, Effect... givenEffects) {
         super(id, name, description, rarity, type);
         this.givenEffects = new Effect[givenEffects.length];
         for (int i = 0; i < givenEffects.length; i++) {
