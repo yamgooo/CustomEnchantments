@@ -1,4 +1,4 @@
-name: CustomEnchant
+name: CustomEnchantment
 main: erik.customenchantment.Enchantment
 version: 1.0.0
 api: 1.0.13

@@ -1,16 +1,19 @@
 package erik.customenchantment;
 
 public class EnchantmentConstants {
-    public static int SPEED = 134;
-    public static int FIRE_RESISTANCE = 135;
-    public static int STRENGTH = 136;
-    public static int INVISIBILITY = 137;
-    public static int MERMAID = 138;
-    public static int INFRARED = 139;
-    public static int IMPLANTS = 140;
-    public static int HELLFORGED = 141;
-    public static int AUTO_SMELT = 141;
-    public static int RECOVER = 142;
-    public static int EXPERIENCE = 143;
-    public static int ZEUS = 144;
+    public static int SPEED = 240;
+    public static int FIRE_RESISTANCE = 241;
+    public static int STRENGTH = 242;
+    public static int INVISIBILITY = 243;
+    public static int MERMAID = 244;
+    public static int INFRARED = 245;
+    public static int IMPLANTS = 246;
+    public static int HELLFORGED = 247;
+    public static int AUTO_SMELT = 247;
+    public static int RECOVER = 249;
+    public static int EXPERIENCE = 250;
+    public static int ZEUS = 251;
+    public static int CHOPPER = 252;
+    public static int GLUTTONY = 253;
+    public static int OXYGENATE = 254;
 }

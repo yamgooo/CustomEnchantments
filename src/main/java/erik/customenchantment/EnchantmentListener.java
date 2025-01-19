@@ -12,6 +12,8 @@ import cn.nukkit.event.player.*;
 import cn.nukkit.event.entity.EntityArmorChangeEvent;
 import cn.nukkit.item.Item;
 import cn.nukkit.inventory.PlayerInventory;
+import cn.nukkit.item.ItemAxeNetherite;
+import cn.nukkit.item.ItemTool;
 import erik.customenchantment.enchantments.*;
 
 import javax.tools.Tool;
@@ -276,7 +278,7 @@ public class EnchantmentListener implements Listener {
     public void onBreak(BlockBreakEvent event) {
         Item item = event.getItem();
 
-        if (!item.hasEnchantments() || !(item instanceof Tool)) {
+        if (!item.hasEnchantments() || !(item instanceof ItemTool)) {
             return;
         }
 

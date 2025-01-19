@@ -24,6 +24,28 @@ public class Enchantment extends PluginBase
     private void registerEnchantments() {
         try {
             enchantmentRegistry.registerEnchantments(
+                    new ItemHeldEffectsEnchant(
+                            EnchantmentConstants.OXYGENATE,
+                            "oxygenate",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.RARE,
+                            EnchantmentType.BREAKABLE,
+                            Effect.getEffect(Effect.WATER_BREATHING)
+                    ),
+                    new GluttonyEnchant(
+                            EnchantmentConstants.GLUTTONY,
+                            "gluttony",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.RARE,
+                            EnchantmentType.BREAKABLE
+                    ),
+                    new ChopperEnchant(
+                            EnchantmentConstants.CHOPPER,
+                            "chopper",
+                            "Custom Armor Enchantment",
+                            cn.nukkit.item.enchantment.Enchantment.Rarity.VERY_RARE,
+                            EnchantmentType.BREAKABLE
+                    ),
                     new ZeusEnchantment(
                             EnchantmentConstants.ZEUS,
                             "zeus",
