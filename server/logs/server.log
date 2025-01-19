@@ -1,4 +1,14 @@
-2025-01-19 11:54:30.229 [main] INFO - Loading server properties...
-2025-01-19 11:54:30.768 [main] INFO - -- Nukkit MOT --
-2025-01-19 11:54:44.674 [main] INFO - Loaded 0 resource packs
-2025-01-19 11:54:44.777 [main] INFO - Opening server on 0.0.0.0:19132
+2025-01-19 12:39:06.094 [main] INFO - Loading server properties...
+2025-01-19 12:39:06.612 [main] INFO - -- Nukkit MOT --
+2025-01-19 12:39:18.582 [main] INFO - Loaded 0 resource packs
+2025-01-19 12:39:18.647 [main] INFO - Opening server on 0.0.0.0:19132
+2025-01-19 12:39:19.585 [main] INFO - Enabling Nukkit-MOT vgit-0b64bd0
+2025-01-19 12:39:19.594 [main] INFO - Loading CustomEnchantment v1.0.0
+2025-01-19 12:39:19.819 [main] INFO - [CustomEnchantment] Successfully registered all enchantments!
+2025-01-19 12:39:21.019 [main] INFO - native LevelDB provider: false
+2025-01-19 12:39:21.310 [main] INFO - Preparing level "world"
+2025-01-19 12:39:23.176 [main] INFO - Preparing level "nether"
+2025-01-19 12:39:23.269 [main] INFO - Preparing level "the_end"
+2025-01-19 12:39:23.289 [main] INFO - Enabling CustomEnchantment v1.0.0
+2025-01-19 12:39:23.316 [main] INFO - [CustomEnchantment] Enabled Custom Enchantments!
+2025-01-19 12:39:23.442 [main] INFO - Done (17.396s)! For help, type "help"
