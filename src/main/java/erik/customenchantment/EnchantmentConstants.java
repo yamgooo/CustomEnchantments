@@ -9,7 +9,7 @@ public class EnchantmentConstants {
     public static int INFRARED = 245;
     public static int IMPLANTS = 246;
     public static int HELLFORGED = 247;
-    public static int AUTO_SMELT = 247;
+    public static int AUTO_SMELT = 248;
     public static int RECOVER = 249;
     public static int EXPERIENCE = 250;
     public static int ZEUS = 251;

@@ -31,7 +31,7 @@ public class ExperienceEnchant extends CustomEnchantment implements BlockBreakEn
     public void onBreak(BlockBreakEvent event, int level) {
         int blockId = event.getBlock().getId();
 
-        if (!isOre(blockId)) {
+        if (isOre(blockId)) {
             int currentXp = event.getDropExp();
             int multiplier = level + 1;
             event.setDropExp(currentXp * multiplier);
